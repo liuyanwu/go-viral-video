@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "go-viral-video"
+version = "2.0.0"
+description = "Multi-platform short video analysis and rewriting pipeline"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+dependencies = [
+    "yt-dlp>=2024.1.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "openai>=1.0",
+    "rich>=13.0",
+    "pysrt>=1.1",
+]
+
+[project.optional-dependencies]
+asr = ["openai-whisper>=20230918"]
+funasr = ["funasr>=1.0", "modelscope"]
+browser = ["browser-cookie3>=0.19.1", "playwright>=1.40"]
+douyin = ["gmssl>=3.2.2"]
+ocr = ["rapidocr-onnxruntime>=1.3"]
+full = [
+    "openai-whisper>=20230918",
+    "browser-cookie3>=0.19.1",
+    "playwright>=1.40",
+    "gmssl>=3.2.2",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+go-viral-video = "go_viral_video:main_cli"
+
+[tool.setuptools.packages.find]
+include = ["*"]
+exclude = ["tests*", "output*", "references*", "*.egg-info*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false

@@ -1,0 +1,28 @@
+# Core dependencies -- see pyproject.toml for full specification
+yt-dlp>=2024.1.0
+httpx>=0.25.0
+pydantic>=2.0
+python-dotenv>=1.0
+openai>=1.0
+rich>=13.0
+pysrt>=1.1
+
+# Optional: ASR (default: whisper)
+# pip install .[asr]
+# openai-whisper>=20230918
+
+# Optional: FunASR (Chinese-optimized ASR)
+# pip install .[funasr]
+# funasr>=1.0
+# modelscope>=1.0
+
+# Optional: Browser cookie extraction
+# pip install .[browser]
+# browser-cookie3>=0.19.1
+# playwright>=1.40
+
+# Optional: Anti-detection (Douyin)
+# gmssl>=3.2.2
+
+# Optional: OCR
+# rapidocr-onnxruntime>=1.3
