@@ -51,8 +51,8 @@ result = score_virality("https://b23.tv/xxx")              # 仅评估爆款指�
 | `mode` | string | ❌ | `full`（默认）, `download`, `transcript`, `analyze` |
 | `output_dir` | string | ❌ | 输出目录（默认：`./output`） |
 | `asr_engine` | string | ❌ | `funasr`（默认）或 `whisper` |
-| `rewrite_modes` | list | ❌ | `["light", "viral", "storytelling", "emotional", "educational", "promotional", "abstract"]` |
-| `rewrite_styles` | list | ❌ | `["storytelling", "emotional", "educational", "promotional"]` |
+| `rewrite_modes` | list | ❌ | `["light", "viral", "storytelling", "emotional", "educational", "promotional", "abstract", "prep", "scqa"]` |
+| `rewrite_styles` | list | ❌ | `["storytelling", "emotional", "educational", "promotional", "prep", "scqa"]` |
 
 **输出结构:**
 
@@ -117,7 +117,7 @@ if result["success"]:
 - **🛡️ 多平台下载 + 反检测**：抖音三级降级策略（API → yt-dlp → Playwright），小红书 `__INITIAL_STATE__` 解析，YouTube 增强 yt-dlp
 - **🌐 7 大平台支持**：抖音、小红书、YouTube、TikTok、B站、Instagram、Twitter/X
 - **📊 5D 爆款评分 + 叙事结构拆解**：钩子、情绪、留存、CTA、社交货币五维评分，附带爆款建议
-- **✍️ 多模式改写**：轻量、爆款、故事化、情绪化、教育型、推广型、抽象型 — 7 种改写风格
+- **✍️ 多模式改写**：轻量、爆款、故事化、情绪化、教育型、推广型、抽象型、PREP（观点-原因-案例-观点）、SCQA（场景-冲突-问题-回答）— 9 种改写风格
 - **🖼️ Vision LLM 图片分析**：支持小红书图文笔记、Twitter/X 图文推文的图片内容理解
 - **🎤 FunASR 中文语音识别**：阿里 FunASR 中文优化，内置领域词表，支持 VAD 和标点恢复
 - **🔌 双模式运行**：AI Skill + CLI 工具，一套代码两种用法
@@ -240,6 +240,20 @@ result = score_virality("https://b23.tv/xxx")
 | `analyze` | ✅ | ✅ | ✅ | ❌ | 只分析不改写 |
 | `transcript` | ✅ | ✅ | ❌ | ❌ | 只需要文案文本 |
 | `download` | ✅ | ❌ | ❌ | ❌ | 只需要下载视频 |
+
+### 改写风格详解
+
+| 风格 | 说明 | 适用场景 |
+|---|---|---|
+| `light` | 轻量微调，保留原文案结构 | 质量不错的原文，只需小幅优化 |
+| `viral` | 爆款强化，放大钩子和情绪张力 | 追求传播量的爆款文案 |
+| `storytelling` | 故事化叙事，用情节带动观众 | 知识分享、个人IP类内容 |
+| `emotional` | 情绪驱动，引发共鸣 | 情感类、励志类内容 |
+| `educational` | 教育型输出，清晰有逻辑 | 教程、干货类内容 |
+| `promotional` | 推广型文案，突出卖点和CTA | 产品推广、带货类内容 |
+| `abstract` | 抽象提炼，高阶概括 | 品牌理念、观点输出 |
+| `prep` | **PREP 框架**：观点 → 原因 → 案例 → 观点循环，通过逻辑闭环建立说服力 | 需要建立信任感的说服类内容 |
+| `scqa` | **SCQA 框架**：场景 → 冲突 → 问题 → 回答，以冲突驱动叙事 | 需要解决问题但避免说教的冲突类内容 |
 
 ## 🎤 ASR 设置
 

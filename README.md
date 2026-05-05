@@ -51,8 +51,8 @@ result = score_virality("https://b23.tv/xxx")              # Virality score only
 | `mode` | string | ❌ | `full` (default), `download`, `transcript`, `analyze` |
 | `output_dir` | string | ❌ | Output directory (default: `./output`) |
 | `asr_engine` | string | ❌ | `funasr` (default) or `whisper` |
-| `rewrite_modes` | list | ❌ | `["light", "viral", "storytelling", "emotional", "educational", "promotional", "abstract"]` |
-| `rewrite_styles` | list | ❌ | `["storytelling", "emotional", "educational", "promotional"]` |
+| `rewrite_modes` | list | ❌ | `["light", "viral", "storytelling", "emotional", "educational", "promotional", "abstract", "prep", "scqa"]` |
+| `rewrite_styles` | list | ❌ | `["storytelling", "emotional", "educational", "promotional", "prep", "scqa"]` |
 
 **Output:**
 
@@ -117,7 +117,7 @@ Rewrites: 2 variants
 - **🛡️ Multi-platform Download with Anti-Detection**: Douyin 3-tier fallback (API → yt-dlp → Playwright), Xiaohongshu `__INITIAL_STATE__` parsing, YouTube enhanced yt-dlp
 - **🌐 7 Platform Support**: Douyin, Xiaohongshu, YouTube, TikTok, Bilibili, Instagram, Twitter/X
 - **📊 5D Virality Scoring + Narrative Breakdown**: Hook, Emotion, Retention, CTA, Social Currency with Go Viral advice
-- **✍️ Multi-mode Rewrite**: Light, Viral, Storytelling, Emotional, Educational, Promotional, Abstract — 7 rewrite styles
+- **✍️ Multi-mode Rewrite**: Light, Viral, Storytelling, Emotional, Educational, Promotional, Abstract, PREP (Point-Reason-Example-Point), SCQA (Situation-Conflict-Question-Answer) — 9 rewrite styles
 - **🖼️ Vision LLM Image Analysis**: Supports Xiaohongshu image+text notes and Twitter/X image+text tweets
 - **🎤 FunASR Chinese ASR**: Alibaba's FunASR optimized for Chinese, with domain vocabulary, VAD, and punctuation recovery
 - **🔌 Dual-mode**: AI Skill + CLI tool, one codebase two usages
@@ -240,6 +240,20 @@ result = score_virality("https://b23.tv/xxx")
 | `analyze` | ✅ | ✅ | ✅ | ❌ | Analysis only |
 | `transcript` | ✅ | ✅ | ❌ | ❌ | Transcript only |
 | `download` | ✅ | ❌ | ❌ | ❌ | Download only |
+
+### Rewrite Styles Reference
+
+| Style | Description | Best For |
+|---|---|---|
+| `light` | Light touch-up, preserves original structure | Good-quality originals needing minor optimization |
+| `viral` | Viral boost, amplifies hooks and emotional tension | Maximizing reach and engagement |
+| `storytelling` | Story-driven narrative, plot captivates audience | Knowledge sharing, personal branding |
+| `emotional` | Emotion-driven, triggers empathy and resonance | Emotional/inspirational content |
+| `educational` | Educational output, clear and logical | Tutorials, how-to content |
+| `promotional` | Promotional copy, highlights selling points and CTA | Product marketing, sales content |
+| `abstract` | Abstract distillation, high-level summary | Brand philosophy, opinion pieces |
+| `prep` | **PREP Framework**: Point → Reason → Example → Point loop, builds persuasion through logical closure | Persuasive content needing trust |
+| `scqa` | **SCQA Framework**: Situation → Conflict → Question → Answer, narrative driven by conflict | Problem-solving content without preaching |
 
 ## 🎤 ASR Setup
 
